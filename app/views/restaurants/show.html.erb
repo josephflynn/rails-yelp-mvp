@@ -1,0 +1,32 @@
+<div class="card" style="width: 18rem; margin: 20px auto;">
+  <div class="card-body">
+    <%= link_to "Edit", edit_restaurant_path(@restaurant), style: "float: right; text-decoration: none;" %>
+    <h5 class="card-title"><%= @restaurant.name %></h5>
+    <%= link_to "Delete", @restaurant, method: :delete, style: "float: right; text-decoration: none;" %>
+    <h6 class="card-subtitle mb-2 text-body-secondary"><%= @restaurant.category %></h6>
+    <hr>
+    <p class="card-text"><strong>Address:</strong></p>
+    <p class="card-text"><%= @restaurant.address %></p>
+    <p class="card-text"><strong>Phone Number:</strong></p>
+    <p class="card-text"><%= @restaurant.phone_number %></p>
+    <hr>
+    <%= link_to "Back to restaurants", restaurants_path, style: "float: left; text-decoration: none;" %>
+  </div>
+</div>
+<div style="width: 30rem; margin: 10px auto; display: flex; justify-content: space-between;">
+  <h4>Reviews:</h4>
+  <%= link_to "Leave a Review", new_restaurant_review_path(@restaurant), style: "float: right;", class: "btn btn-primary" %>
+</div>
+<% @restaurant.reviews.reverse_each do |review| %>
+  <div class="card" style="width: 30rem; margin: 20px auto;">
+    <div class="card-header">
+      <%= review.rating %> Stars
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p><%= review.content %></p>
+        <footer class="blockquote-footer"><%= review.updated_at %><cite title="Source Title"> - by Customer</cite></footer>
+      </blockquote>
+    </div>
+  </div>
+<% end %>

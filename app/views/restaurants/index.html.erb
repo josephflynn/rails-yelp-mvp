@@ -1,0 +1,18 @@
+<h1 style="text-align: center; margin-top: 20px;">Restaurants</h1>
+<hr style="width: 35rem; margin: 0 auto;">
+<div class="row" style="width: 25rem; margin: 20px auto; display: block;">
+    <% @restaurants.each do |restaurant| %>
+      <%= link_to restaurant_path(restaurant) do %>
+        <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= restaurant.name %></h5>
+                <p class="card-text"><%= restaurant.category %></p>
+                <hr>
+                <a href="restaurants/<%= restaurant.id %>" class="btn btn-primary">Go to restuarant</a>
+              </div>
+            </div>
+        </div>
+      <% end %>
+    <% end %> 
+</div>
